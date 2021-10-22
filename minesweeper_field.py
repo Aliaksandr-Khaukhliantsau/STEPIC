@@ -35,43 +35,44 @@ for _ in range(m):
 for i in number_of_lines:
     # ??????????????????????????????
     print(i)
+    print(f'индекс {number_of_lines.index(i)}')
     for z in range(len(i)):
         print(z)
-        print(number_of_lines[i][z])
+        print(number_of_lines[number_of_lines.index(i)][z])
         if z == 0:
             # print('ноль')
             if i[z] == '.':
                 x = 0
                 # print('.')
-                if number_of_lines[i + 1][z] == '*':
+                if number_of_lines[number_of_lines.index(i) + 1][z] == '*':
                     x += 1
-                if number_of_lines[i + 1][z + 1] == '*':
+                if number_of_lines[number_of_lines.index(i) + 1][z + 1] == '*':
                     x += 1
-                print(x)
+                # print(x)
 
         elif z == len(i) - 1:
             # print('минус 1')
             if i[z] == '.':
                 x = 0
                 # print('.')
-                if number_of_lines[i + 1][z] == '*':
+                if number_of_lines[number_of_lines.index(i) + 1][z] == '*':
                     x += 1
-                if number_of_lines[i + 1][z - 1] == '*':
+                if number_of_lines[number_of_lines.index(i) + 1][z - 1] == '*':
                     x += 1
-                print(x)
+                # print(x)
 
         else:
             if i[z] == '.':
                 x = 0
                 # print('другое')
-                if number_of_lines[i + 1][z] == '*':
+                if number_of_lines[number_of_lines.index(i) + 1][z] == '*':
                     x += 1
                     # print('.')
-                if number_of_lines[i + 1][z - 1] == 'x':
+                if number_of_lines[number_of_lines.index(i) + 1][z - 1] == 'x':
                     x += 1
-                if number_of_lines[i + 1][z + 1] == 'x':
+                if number_of_lines[number_of_lines.index(i) + 1][z + 1] == 'x':
                     x += 1
-                    print(x)
+                    # print(x)
 
 
 
