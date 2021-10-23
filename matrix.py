@@ -15,9 +15,9 @@ def filling_a_result_tuple(i, matrix):
     for k in matrix:
         for z in k:
             if i == z:
-                w = matrix.index(k)
-                q = k.index(i)
-                return w, q
+                # w = matrix.index(k)
+                # q = k.index(i)
+                return matrix.index(k), k.index(i)
     print(f'Буквы \'{i}\' нет в матрице')
     sys.exit()
 
@@ -43,7 +43,7 @@ def matrix_creation(word_input, string_input, sqrt):
 
 def square_root_extraction(word_input, string_input):
     sqrt = len(string_input) ** .5
-    print(sqrt)
+    # print(sqrt)
     if sqrt.is_integer():
         sqrt = int(sqrt)
         matrix_creation(word_input, string_input, sqrt)
@@ -57,7 +57,7 @@ def word_validation(word_input, string_input):
         print('Вы не ввели слово')
         return
     if word_input.isalpha():
-        print('word is alpha')
+        # print('word is alpha')
         square_root_extraction(word_input, string_input)
     else:
         print('Слово должно содержать только символы алфавита')
@@ -75,7 +75,7 @@ def string_validation(string_input):
         print('Минимальное количество символов крадратной матрицы должно быть 2 * 2')
         return
     if string_input.isalpha():
-        print('string is alpha')
+        # print('string is alpha')
         word_input_function(string_input)
     else:
         print('Строка должна содержать только символы алфавита')
@@ -91,7 +91,6 @@ def line_input_function():
 line_input_function()
 
 # 'OMNZ' 'MZ' [0,1] -> [1,1]
-# string_input = 'CVBSYPLME'
 # 'QLGNAEKIRLRNGEAE' 'KING' [1,2] -> [1,3] -> [0,3] -> [0,2]
 # 'WKDODJHFGHGKMDKJXOQTDNTES' 'OMNO' [0,3] -> [2,2] -> [4,1] -> [0,3]
 # 'LPOIUHBVFGGFGGBVVCCCFFDWQAZMJDTUIRSD' 'OMWZM' [0,2] -> [4,3] -> [3,5] -> [4,2] -> [4,3]
