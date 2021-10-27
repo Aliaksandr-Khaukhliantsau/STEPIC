@@ -30,9 +30,10 @@ if n < 1 or n > 100 or m < 1 or m > 100:
 number_of_lines = (['.', '.', '*', '.'], ['*', '*', '.', '.'], ['.', '.', '*', '.'], ['.', '.', '.', '.'])  # тест
 
 for i in range(len(number_of_lines)):
-    print(f'number_of_lines[{i}] = {number_of_lines[i]}')
+    result = ''
+    # print(f'number_of_lines[{i}] = {number_of_lines[i]}')
     for z in range(len(number_of_lines[i])):
-        print(f'number_of_lines[{i}][{z}] = {number_of_lines[i][z]}')
+        # print(f'number_of_lines[{i}][{z}] = {number_of_lines[i][z]}')
         if i == 0:
             if z == 0:
                 if number_of_lines[i][z] == '.':
@@ -49,7 +50,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z + 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
             elif z == len(number_of_lines[i]) - 1:
                 if number_of_lines[i][z] == '.':
@@ -66,7 +70,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z - 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
             else:
                 if number_of_lines[i][z] == '.':
@@ -88,7 +95,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z - 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
         elif i == len(number_of_lines) - 1:
             if z == 0:
@@ -106,7 +116,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z + 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
             elif z == len(number_of_lines[i]) - 1:
                 if number_of_lines[i][z] == '.':
@@ -123,7 +136,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z - 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
             else:
                 if number_of_lines[i][z] == '.':
@@ -145,7 +161,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z - 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
         else:
             if z == 0:
@@ -167,7 +186,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z + 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
             elif z == len(number_of_lines[i]) - 1:
                 if number_of_lines[i][z] == '.':
@@ -188,7 +210,10 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z - 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
 
             else:
                 if number_of_lines[i][z] == '.':
@@ -216,4 +241,9 @@ for i in range(len(number_of_lines)):
                     #         x += 1
                     #     if number_of_lines[i - 1][z - 1] == '*':
                     #         x += 1
-                    print(f'x = {x}')
+                    # print(f'x = {x}')
+                    result += str(x)
+                else:
+                    result += '*'
+
+    print(result)
