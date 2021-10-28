@@ -26,22 +26,48 @@ for i in range(len(number_of_lines)):
     for z in range(len(number_of_lines[i])):
         if i == 0:
             if z == 0:
-                if number_of_lines[i][z] == '.' and m != 1:  # проверить на односимвольную строку 'm'!!!
+                if number_of_lines[i][z] == '.' and n == 1:
                     x = 0
-                    if number_of_lines[i][z + 1] == '*':
-                        x += 1
-                    if number_of_lines[i + 1][z] == '*':
-                        x += 1
-                    if number_of_lines[i + 1][z + 1] == '*':
-                        x += 1
-                    result += str(x)
-                elif m == 1:
-                    result += '0'
+                    if m != 1:
+                        if number_of_lines[i][z + 1] == '*':
+                            x += 1
+                            result += str(x)
+                        else:
+                            result += '0'
+                    else:
+                        result += '0'
+                        break
+
+                elif number_of_lines[i][z] == '.' and n != 1:
+                    x = 0
+                    if m != 1:
+                        if number_of_lines[i][z + 1] == '*':
+                            x += 1
+                        if number_of_lines[i + 1][z] == '*':
+                            x += 1
+                        if number_of_lines[i + 1][z + 1] == '*':
+                            x += 1
+                        result += str(x)
+                    else:
+                        if number_of_lines[i + 1][z] == '*':
+                            x += 1
+                        result += str(x)
                 else:
                     result += '*'
 
             elif z == len(number_of_lines[i]) - 1:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n == 1:
+                    x = 0
+                    if m != 1:
+                        if number_of_lines[i][z - 1] == '*':
+                            x += 1
+                            result += str(x)
+                        else:
+                            result += '0'
+                    else:
+                        result += '0'
+
+                elif number_of_lines[i][z] == '.' and n != 1:
                     x = 0
                     if number_of_lines[i][z - 1] == '*':
                         x += 1
@@ -54,7 +80,19 @@ for i in range(len(number_of_lines)):
                     result += '*'
 
             else:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n == 1:
+                    x = 0
+                    if m != 1:
+                        if number_of_lines[i][z + 1] == '*':
+                            x += 1
+                        if number_of_lines[i][z - 1] == '*':
+                            x += 1
+                    else:
+                        result += '0'
+                        break
+                    result += str(x)
+
+                elif number_of_lines[i][z] == '.' and n != 1:
                     x = 0
                     if number_of_lines[i][z - 1] == '*':
                         x += 1
@@ -72,20 +110,25 @@ for i in range(len(number_of_lines)):
 
         elif i == len(number_of_lines) - 1:
             if z == 0:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n != 1:
                     x = 0
-                    if number_of_lines[i][z + 1] == '*':
-                        x += 1
-                    if number_of_lines[i - 1][z] == '*':
-                        x += 1
-                    if number_of_lines[i - 1][z + 1] == '*':
-                        x += 1
-                    result += str(x)
+                    if m != 1:
+                        if number_of_lines[i][z + 1] == '*':
+                            x += 1
+                        if number_of_lines[i - 1][z] == '*':
+                            x += 1
+                        if number_of_lines[i - 1][z + 1] == '*':
+                            x += 1
+                        result += str(x)
+                    else:
+                        if number_of_lines[i - 1][z] == '*':
+                            x += 1
+                        result += str(x)
                 else:
                     result += '*'
 
             elif z == len(number_of_lines[i]) - 1:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n != 1:
                     x = 0
                     if number_of_lines[i][z - 1] == '*':
                         x += 1
@@ -98,7 +141,7 @@ for i in range(len(number_of_lines)):
                     result += '*'
 
             else:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n != 1:
                     x = 0
                     if number_of_lines[i][z - 1] == '*':
                         x += 1
@@ -116,24 +159,31 @@ for i in range(len(number_of_lines)):
 
         else:
             if z == 0:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n != 1:
                     x = 0
-                    if number_of_lines[i][z + 1] == '*':  # ???????????????????????????
-                        x += 1
-                    if number_of_lines[i + 1][z] == '*':
-                        x += 1
-                    if number_of_lines[i + 1][z + 1] == '*':
-                        x += 1
-                    if number_of_lines[i - 1][z] == '*':
-                        x += 1
-                    if number_of_lines[i - 1][z + 1] == '*':
-                        x += 1
-                    result += str(x)
+                    if m != 1:
+                        if number_of_lines[i][z + 1] == '*':
+                            x += 1
+                        if number_of_lines[i + 1][z] == '*':
+                            x += 1
+                        if number_of_lines[i + 1][z + 1] == '*':
+                            x += 1
+                        if number_of_lines[i - 1][z] == '*':
+                            x += 1
+                        if number_of_lines[i - 1][z + 1] == '*':
+                            x += 1
+                        result += str(x)
+                    else:
+                        if number_of_lines[i + 1][z] == '*':
+                            x += 1
+                        if number_of_lines[i - 1][z] == '*':
+                            x += 1
+                        result += str(x)
                 else:
                     result += '*'
 
             elif z == len(number_of_lines[i]) - 1:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n != 1:
                     x = 0
                     if number_of_lines[i][z - 1] == '*':
                         x += 1
@@ -150,7 +200,7 @@ for i in range(len(number_of_lines)):
                     result += '*'
 
             else:
-                if number_of_lines[i][z] == '.':
+                if number_of_lines[i][z] == '.' and n != 1:
                     x = 0
                     if number_of_lines[i][z - 1] == '*':
                         x += 1
