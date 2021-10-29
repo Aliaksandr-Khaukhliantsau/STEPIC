@@ -8,3 +8,19 @@
 # Строка, содержащая индексы (индексация начинается с нуля) вхождения подстроки в строку,
 # разделённые пробелом или число -1 в случае, когда подстрока не найдена.
 
+
+string_input = input()
+substring_input = input()
+
+result = ''
+
+for i, j in enumerate(string_input):
+    if j == substring_input[0]:
+        a = string_input[i:i + len(substring_input)]
+        if a == substring_input:
+            result += f' {i}'
+
+if result:
+    print(result)
+else:
+    print('-1')
