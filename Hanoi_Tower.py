@@ -35,55 +35,18 @@
 #
 # 1 - 3
 
-# kernel_1, kernel_2, kernel_3 = [], [], []
 
-# for i in range(int(input())):
-#     kernel_1.append(i + 1)
-
-# print(kernel_1, kernel_2, kernel_3)
-
-
-kernel_1, kernel_2, kernel_3 = [1, 2, 3, 4], [], []
-
-# for x in kernel_1:
-#     if x == 1:
-#         kernel_1.remove(x)
-#         kernel_3.append(x)
-#         continue
-#     kernel_1.remove(x)
-#     kernel_2.append(x)
-
-while True:
-    if kernel_1[0] == 1:
-        kernel_2.append(kernel_1[0])
-        kernel_1.pop(0)
+def hanoi(c, first, third):
+    if c == 1:
+        print(f'{first} - {third}')
     else:
-        kernel_3.append(kernel_1[0])
-        kernel_1.pop(0)
-        kernel_3.append(kernel_2[-1])
-        kernel_2.pop(-1)
-        kernel_2.append(kernel_1[0])
-        kernel_1.pop(0)
-        kernel_1.append(kernel_3[-1])
-        kernel_3.pop(-1)
-        kernel_2.append(kernel_3[-1])
-        kernel_3.pop(-1)
-        kernel_2.append(kernel_1[-1])
-        kernel_1.pop(-1)
-        kernel_3.append(kernel_1[-1])
-        kernel_1.pop(-1)
-        kernel_3.append(kernel_2[-1])
-        kernel_2.pop(-1)
-        kernel_1.append(kernel_2[-1])
-        kernel_2.pop(-1)
-        kernel_1.append(kernel_3[-1])
-        kernel_3.pop(-1)
+        hanoi(c - 1, first, 6 - first - third)
+        print(f'{first} - {third}')
+        hanoi(c - 1, 6 - first - third, third)
 
 
+rings = int(input())
 
-    # if kernel_1:
-    #     continue
-    # else:
-    #     break
+first, third = 1, 3
 
-
+hanoi(rings, first, third)
