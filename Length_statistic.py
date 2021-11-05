@@ -24,20 +24,23 @@
 # 8: 1
 # 9: 2
 
-input_string = input().split()
-print(input_string)
 
-a = 1
-b = 0
-for i in input_string:
-    if a == len(i):
-        b += 1
-        continue
-    print(f'{a}: {b}')
+def sort_by_length(input_string):
+    return len(input_string)
 
 
+def stat(length):
+    quantity = 0
+    for i in my_string:
+        if length == len(i):
+            quantity += 1
+    if quantity != 0:
+        print(f'{length}: {quantity}')
+    length += 1
+    if length <= len(my_string[0]):
+        stat(length)
 
 
+my_string = sorted(input().split(), key=sort_by_length, reverse=True)
 
-
-
+stat(1)
