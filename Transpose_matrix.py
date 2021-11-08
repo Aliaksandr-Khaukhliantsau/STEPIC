@@ -27,19 +27,52 @@
 # 1 3
 # 2 4
 
+# nm_list = input().split()
+#
+# print(nm_list)
+# my_list = []
+# for i in range(int(nm_list[0])):
+#     if len(nm_list) != 2:
+#         break
+#     a = input().split()
+#     print(a)
+#     if len(a) != int(nm_list[-1]):
+#         break
+#     my_list += [a]
+#     print(my_list)
+#
+# for i in range(len(my_list)):
+#     for k in range(len(my_list[i])):
+#         if i == len(my_list) - 1:
+#             break
+#         print(my_list[i][k], my_list[i + 1][k])
+
+
+def func_2(my_list):
+    answer = ''
+    for i in range(len(my_list)):
+        for k in range(len(my_list[i])):
+            if i == len(my_list) - 1:
+                break
+            answer += f'{my_list[i][k]} {my_list[i + 1][k]}\n'
+    answer = answer[:-1]
+    print(answer)
+
+
+def func_1(nm_list):
+    my_list = []
+    for i in range(int(nm_list[0])):
+        a = input().split()
+        print(a)
+        if len(a) != int(nm_list[-1]):
+            return
+        my_list += [a]
+        print(my_list)
+    func_2(my_list)
+
+
 nm_list = input().split()
 print(nm_list)
-my_list = []
-for i in range(int(nm_list[0])):
-    a = input().split()
-    print(a)
-    if len(a) != int(nm_list[1]):
-        break
-    my_list += [a]
-    print(my_list)
 
-for i in range(len(my_list)):
-    for k in range(len(my_list[i])):
-        if i == len(my_list) - 1:
-            break
-        print(my_list[i][k], my_list[i + 1][k])
+if len(nm_list) == 2:
+    func_1(nm_list)
