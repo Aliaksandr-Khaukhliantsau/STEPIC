@@ -27,52 +27,27 @@
 # 1 3
 # 2 4
 
-# nm_list = input().split()
-#
-# print(nm_list)
-# my_list = []
-# for i in range(int(nm_list[0])):
-#     if len(nm_list) != 2:
-#         break
-#     a = input().split()
-#     print(a)
-#     if len(a) != int(nm_list[-1]):
-#         break
-#     my_list += [a]
-#     print(my_list)
-#
-# for i in range(len(my_list)):
-#     for k in range(len(my_list[i])):
-#         if i == len(my_list) - 1:
-#             break
-#         print(my_list[i][k], my_list[i + 1][k])
 
-
-def func_2(my_list):
+def func_2(matrix):
     answer = ''
-    for i in range(len(my_list)):
-        for k in range(len(my_list[i])):
-            if i == len(my_list) - 1:
-                break
-            answer += f'{my_list[i][k]} {my_list[i + 1][k]}\n'
-    answer = answer[:-1]
-    print(answer)
+    for i in range(len(matrix[0])):
+        for k in range(len(matrix)):
+            answer += f'{str(matrix[k][i])} '
+        answer = answer[:-1] + '\n'
+    print(answer[:-1])
 
 
-def func_1(nm_list):
-    my_list = []
-    for i in range(int(nm_list[0])):
-        a = input().split()
-        print(a)
-        if len(a) != int(nm_list[-1]):
+def func_1(n_m_list):
+    matrix = []
+    for i in range(int(n_m_list[0])):
+        input_str = input().split()
+        if len(input_str) != int(n_m_list[-1]):
             return
-        my_list += [a]
-        print(my_list)
-    func_2(my_list)
+        matrix += [input_str]
+    func_2(matrix)
 
 
-nm_list = input().split()
-print(nm_list)
+n_m_list = input().split()
 
-if len(nm_list) == 2:
-    func_1(nm_list)
+if len(n_m_list) == 2 and n_m_list[0] != '0':
+    func_1(n_m_list)
