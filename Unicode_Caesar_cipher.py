@@ -35,10 +35,8 @@ def func(alpha, input_str, shift):
     result = ''
     i = 0
     while i <= len(input_str) - 1:
-        s = input_str[i]
-        a = alpha.index(s)
-        aa = (a + shift) % len(alpha)
-        result += alpha[aa]
+        symbol = (alpha.index(input_str[i]) + shift) % len(alpha)  # остаток от деления (например 100 % 80 = 20)
+        result += alpha[symbol]
         i += 1
     print(f'Result: "{result}"')
 
