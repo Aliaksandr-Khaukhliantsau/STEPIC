@@ -33,19 +33,18 @@
 
 def func(alpha, input_str, shift):
     result = ''
-    for i in input_str:
-        if alpha.index(i) + shift < len(alpha) - 1:
-            result += alpha[alpha.index(i) + shift]
-        else:
-            a = 0
-            while (alpha.index(i) + shift) >= len(alpha):
-                a += (alpha.index(i) + shift) - len(alpha)
-
-            result += alpha[(alpha.index(i) + shift) - len(alpha)]
+    i = 0
+    while i <= len(input_str) - 1:
+        s = input_str[i]
+        a = alpha.index(s)
+        aa = (a + shift) % len(alpha)
+        result += alpha[aa]
+        i += 1
     print(f'Result: "{result}"')
 
 
-my_alpha = '😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷😸😹😺😻😼😽😾😿🙀🙁🙂🙃🙄🙅🙆🙇🙈🙉🙊🙋🙌🙍🙎🙏😀'
+# my_alpha = '😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷😸😹😺😻😼😽😾😿🙀🙁🙂🙃🙄🙅🙆🙇🙈🙉🙊🙋🙌🙍🙎🙏😀'
+my_alpha = ''.join([chr(i) for i in range(int(0x1f600), int(0x1f64f) + 1)])
 input_1 = int(input())
 input_2 = input()
 
