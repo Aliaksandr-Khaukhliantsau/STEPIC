@@ -17,17 +17,42 @@
 # 0 3 4
 
 
+# первый вариант
+
+# def func():
+#     my_list = []
+#     result = []
+#     a = int
+#     numb = input().split()
+#     for i in numb:
+#         my_list.append(int(i))
+#     my_list.sort()
+#     for i in my_list:
+#         if i == a:
+#             result.append(str(i))
+#         a = i
+#     result = set(result)
+#     return ' '.join(result)
+#
+#
+# print(func())
+
+
+# второй вариант
+
+import collections
+
+
 def func():
-    my_list = []
-    a = 0
+    result = []
+    my_collection = collections.Counter()
     numb = input().split()
     for i in numb:
-        my_list.append(int(i))
-    my_list.sort()
-    for i in my_list:
-        if i == a:
-
-
+        my_collection[i] += 1
+    for i, k in my_collection.most_common():
+        if k > 1:
+            result.append(i)
+    return ' '.join(result)
 
 
 print(func())
