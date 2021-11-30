@@ -43,16 +43,32 @@
 import collections
 
 
+# def func():
+#     result = []
+#     my_collection = collections.Counter()
+#     numb = input().split()
+#     for i in numb:
+#         my_collection[i] += 1
+#     for i, k in my_collection.most_common():
+#         if k > 1:
+#             result.append(i)
+#     return ' '.join(result)
+#
+#
+# print(func())
+
+
+# третий вариант
 def func():
-    result = []
-    my_collection = collections.Counter()
     numb = input().split()
+    buff = set()
+    result = set()
     for i in numb:
-        my_collection[i] += 1
-    for i, k in my_collection.most_common():
-        if k > 1:
-            result.append(i)
-    return ' '.join(result)
+        if i in buff:
+            result.add(i)
+        else:
+            buff.add(i)
+    print(*result)
 
 
-print(func())
+func()
