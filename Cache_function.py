@@ -34,27 +34,18 @@
 # 41
 
 
-def func(x):
-    x = x * 2
+def f(x):
+    return x * 2
+
 
 count = int(input())
-# my_dict = {'5': 11, '12': 41, '9': 47, '20': 61}
-my_list = []
+my_tuple = ()
+my_dict = {}
+
 for i in range(count):
-    my_list.append(input())
+    my_tuple += (input(),)
 
-for i in my_list:
-    if i in my_dict:
-        print(my_dict.get(i))
-
-
-
-# define f-function for test like f(x) = x**2
-# get count of numbers: input n
-# my variables my_list_inp, my_dict
-
-# create list of inputed values: cycle for, append to my_list_inp
-
-# fill dict with keys and values: if i-element not in keys of my_dict, then add i-element anf f(i) to my_dict.
-
-# print results: my_dict[my_list_inp[i]] in for cycle
+for i in my_tuple:
+    if i not in my_dict:
+        my_dict[i] = f(int(i))
+    print(my_dict[i])
