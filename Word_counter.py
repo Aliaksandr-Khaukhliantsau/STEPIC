@@ -24,18 +24,26 @@
 # abc 2
 
 
-def func():
-    my_input = input().lower().split()
-    my_dict = {}
-    for word in my_input:
-        if word not in my_dict:
-            my_dict[word] = 1
-        else:
-            my_dict[word] = my_dict.get(word) + 1
+#  первый вариант
+# def func():
+#     my_input = input().lower().split()
+#     my_dict = {}
+#     for word in my_input:
+#         if word not in my_dict:
+#             my_dict[word] = 1
+#         else:
+#             my_dict[word] = my_dict.get(word) + 1
+#
+#     for k, v in my_dict.items():
+#         # print('%s %d' % (k, v))  # можно так
+#         print(f'{k} {v}')  # а можно и так
+#
+#
+# func()
 
-    for k, v in my_dict.items():
-        # print('%s %d' % (k, v))  # можно так
-        print(f'{k} {v}')  # а можно и так
 
+#  второй вариант
+from collections import Counter
 
-func()
+for key, value in Counter(input().lower().split()).items():
+    print(key, value)
