@@ -56,49 +56,81 @@
 # X.X...
 # XXXX.X
 # XXXXX.
-from pprint import pprint
+
+
+from copy import deepcopy
+
+
+def func_2(inp_f, out_f, buff, i, k):
+    x = 0
+    for j in buff:
+        if j == 'X':
+            x += 1
+
+    if inp_f[i][k] == '.':
+        if x == 3:
+            out_f[i][k] = 'X'
+        else:
+            out_f[i][k] = '.'
+    elif inp_f[i][k] == 'X':
+        if x == 3 or x == 2:
+            out_f[i][k] = 'X'
+        else:
+            out_f[i][k] = '.'
+    return out_f[i][k]
 
 
 def func():
-    size = tuple(int(i) for i in input().split())
-    inp_f = []
+    # size = tuple(int(i) for i in input().split())
+    # inp_f = []
 
-    for i in range(size[0]):
-        inp_f.append(list(str(i) for i in input()))
-        if len(inp_f[i]) != size[1]:
-            return print(f'величина поля должна быть равна {size[1]}')
+    # size = [5, 6]
+    size = [5, 5]
 
 
-    out_f = inp_f
+    # for i in range(size[0]):
+    #     inp_f.append(list(str(i) for i in input()))
+    #     if len(inp_f[i]) != size[1]:
+    #         return print(f'величина поля должна быть равна {size[1]}')
+
+    # inp_f = [['.', '.', '.', 'X', 'X', '.'], ['.', 'X', 'X', '.', '.', '.'], ['.', '.', 'X', '.', '.', '.'], ['X', 'X', '.', '.', '.', '.'], ['X', '.', '.', 'X', 'X', '.']]
+    inp_f = [['.', '.', '.', '.', '.'], ['.', '.', 'X', '.', '.'], ['.', '.', 'X', '.', '.'], ['.', '.', 'X', '.', '.'],
+             ['.', '.', '.', '.', '.']]
+
+    for i in inp_f:
+        print_str = ''
+        for k in i:
+            print_str += k
+        print(print_str)
+    print('')
+
+    out_f = deepcopy(inp_f)
     buff = ''
 
     for i in range(len(inp_f)):
         for k in range(len(inp_f[i])):
             if i == 0 and k == 0:
-                buff = buff + inp_f[i][k] + inp_f[i + 1][k] + inp_f[i + 1][k + 1]  # буфер для проверки
-                if inp_f[i][k] == 'x' and inp_f[i + 1][k] == 'x' and inp_f[i + 1][k + 1] == 'x':
-                    out_f[i][k] = 'x'
+                buff += inp_f[i][k + 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1]  # буфер для проверки
             elif i == 0 and k == len(inp_f[i]) - 1:
-                if inp_f[i][k - 1] == 'x' and inp_f[i + 1][k] == 'x' and inp_f[i + 1][k - 1] == 'x':
-                    out_f[i][k] = 'x'
+                buff += inp_f[i][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k - 1]
             elif i == len(inp_f) - 1 and k == 0:
-                if inp_f[i][k + 1] == 'x' and inp_f[i - 1][k] == 'x' and inp_f[i - 1][k + 1] == 'x':
-                    out_f[i][k] = 'x'
+                buff += inp_f[i][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k + 1]
             elif i == len(inp_f) - 1 and k == len(inp_f[i]) - 1:
-                if inp_f[i][k - 1] == 'x' and inp_f[i - 1][k] == 'x' and inp_f[i - 1][k - 1] == 'x':
-                    out_f[i][k] = 'x'
+                buff += inp_f[i][k - 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
             elif i == 0:
-                pass
+                buff += inp_f[i][k - 1] + inp_f[i][k + 1] + inp_f[i + 1][k] + inp_f[i + 1][k - 1] + inp_f[i + 1][k + 1]
+            elif i == len(inp_f) - 1:
+                buff += inp_f[i][k - 1] + inp_f[i][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1] + inp_f[i - 1][k + 1]
             elif k == 0:
-                pass
-            elif i != 0:
-                pass
-            elif k != 0:
-                pass
+                buff += inp_f[i - 1][k] + inp_f[i - 1][k + 1] + inp_f[i][k + 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1]
+            elif k == len(inp_f[i]) - 1:
+                buff += inp_f[i - 1][k] + inp_f[i - 1][k - 1] + inp_f[i][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k - 1]
             else:
-                pass
+                buff += inp_f[i][k - 1] + inp_f[i + 1][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1] + inp_f[i][k + 1] + inp_f[i - 1][k - 1] + inp_f[i - 1][k] + inp_f[i - 1][k + 1]
+            func_2(inp_f, out_f, buff, i, k)
+            buff = ''
 
-    for i in inp_f:
+    for i in out_f:
         print_str = ''
         for k in i:
             print_str += k
@@ -106,3 +138,80 @@ def func():
 
 
 func()
+
+
+# from copy import deepcopy
+#
+# def func_2(inp_f, out_f, buff, i, k):
+#     x = 0
+#     for j in buff:
+#         if j == 'X':
+#             x += 1
+#
+#     if inp_f[i][k] == '.':
+#         if x == 3:
+#             out_f[i][k] = 'X'
+#         else:
+#             out_f[i][k] = '.'
+#     elif inp_f[i][k] == 'X':
+#         if x == 3 or x == 2:
+#             out_f[i][k] = 'X'
+#         else:
+#             out_f[i][k] = '.'
+#     return out_f
+#
+#
+# def func():
+#     # size = tuple(int(i) for i in input().split())
+#     # inp_f = []
+#     size = [5, 5]
+#
+#
+#     # for i in range(size[0]):
+#     #     inp_f.append(list(str(i) for i in input()))
+#     #     if len(inp_f[i]) != size[1]:
+#     #         return print(f'величина поля должна быть равна {size[1]}')
+#
+#     inp_f = [['.', '.', '.', '.', '.'], ['.', '.', 'X', '.', '.'], ['.', '.', 'X', '.', '.'], ['.', '.', 'X', '.', '.'], ['.', '.', '.', '.', '.']]
+#
+#     for i in inp_f:
+#         print_str = ''
+#         for k in i:
+#             print_str += k
+#         print(print_str)
+#     print('')
+#
+#     out_f = deepcopy(inp_f)
+#     buff = ''
+#
+#     for i in range(len(inp_f)):
+#         for k in range(len(inp_f[i])):
+#             if i == 0 and k == 0:
+#                 buff += inp_f[i][k + 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1]  # буфер для проверки
+#             elif i == 0 and k == len(inp_f[i]) - 1:
+#                 buff += inp_f[i][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k - 1]
+#             elif i == len(inp_f) - 1 and k == 0:
+#                 buff += inp_f[i][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k + 1]
+#             elif i == len(inp_f) - 1 and k == len(inp_f[i]) - 1:
+#                 buff += inp_f[i][k - 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
+#             elif i == 0:
+#                 buff += inp_f[i][k - 1] + inp_f[i][k + 1] + inp_f[i + 1][k] + inp_f[i + 1][k - 1] + inp_f[i + 1][k + 1]
+#             elif i == len(inp_f) - 1:
+#                 buff += inp_f[i][k - 1] + inp_f[i][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1] + inp_f[i - 1][k + 1]
+#             elif k == 0:
+#                 buff += inp_f[i - 1][k] + inp_f[i - 1][k + 1] + inp_f[i][k + 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1]
+#             elif k == len(inp_f[i]) - 1:
+#                 buff += inp_f[i - 1][k] + inp_f[i - 1][k - 1] + inp_f[i][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k - 1]
+#             else:
+#                 buff += inp_f[i][k - 1] + inp_f[i + 1][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1] + inp_f[i][k + 1] + inp_f[i - 1][k - 1] + inp_f[i - 1][k] + inp_f[i - 1][k + 1]
+#             out_f = func_2(inp_f, out_f, buff, i, k)
+#             buff = ''
+#
+#     for i in out_f:
+#         print_str = ''
+#         for k in i:
+#             print_str += k
+#         print(print_str)
+#
+#
+# func()
