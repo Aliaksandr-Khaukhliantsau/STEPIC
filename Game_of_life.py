@@ -61,6 +61,14 @@
 from copy import deepcopy
 
 
+def result_print(out_f):
+    for i in out_f:
+        print_str = ''
+        for k in i:
+            print_str += k
+        print(print_str)
+
+
 def func_2(inp_f, out_f, buff, i, k):
     x = 0
     for j in buff:
@@ -82,10 +90,14 @@ def func_2(inp_f, out_f, buff, i, k):
 
 def func():
     # size = tuple(int(i) for i in input().split())
-    # inp_f = []
-
+    #
     size = [5, 6]
     # size = [5, 5]
+
+    if size[0] == 0 or size[1] == 0:
+        return
+
+    inp_f = []
 
 
     # for i in range(size[0]):
@@ -93,8 +105,16 @@ def func():
     #     if len(inp_f[i]) != size[1]:
     #         return print(f'величина поля должна быть равна {size[1]}')
 
-    inp_f = [['.', '.', '.', 'X', 'X', '.'], ['.', 'X', 'X', '.', '.', '.'], ['.', '.', 'X', '.', '.', '.'], ['X', 'X', '.', '.', '.', '.'], ['X', '.', '.', 'X', 'X', '.']]
-    # inp_f = [['.', '.', '.', '.', '.'], ['.', '.', 'X', '.', '.'], ['.', '.', 'X', '.', '.'], ['.', '.', 'X', '.', '.'],
+    inp_f = [['.', '.', '.', 'X', 'X', '.'],
+             ['.', 'X', 'X', '.', '.', '.'],
+             ['.', '.', 'X', '.', '.', '.'],
+             ['X', 'X', '.', '.', '.', '.'],
+             ['X', '.', '.', 'X', 'X', '.']]
+
+    # inp_f = [['.', '.', '.', '.', '.'],
+    #          ['.', '.', 'X', '.', '.'],
+    #          ['.', '.', 'X', '.', '.'],
+    #          ['.', '.', 'X', '.', '.'],
     #          ['.', '.', '.', '.', '.']]
 
     for i in inp_f:
@@ -107,38 +127,52 @@ def func():
     out_f = deepcopy(inp_f)
     buff = ''
 
-    for i in range(len(inp_f)):
-        for k in range(len(inp_f[i])):
+    if size[0] == 1 and size[1] == 1:
+        result_print(out_f)
+        return
+
+    if size[0] == 1:
+        pass
+
+    if size[1] == 1:
+        pass
+
+    for i in range(size[0]):
+        for k in range(size[1]):
             if i == 0 and k == 0:
-                buff += inp_f[0][-1] + inp_f[1][-1] + inp_f[1][0] + inp_f[1][1] + inp_f[0][1] + inp_f[-1][1] + inp_f[-1][0] + inp_f[-1][-1]  # буфер для проверки
-            elif i == 0 and k == len(inp_f[i]) - 1:
-                buff += inp_f[0][k - 1] + inp_f[1][k - 1] + inp_f[1][k] + inp_f[1][0] + inp_f[0][0] + inp_f[-1][0] + inp_f[-1][k] + inp_f[-1][k - 1]
-            elif i == len(inp_f) - 1 and k == 0:
-                buff += inp_f[i][-1] + inp_f[0][-1] + inp_f[0][0] + inp_f[0][1] + inp_f[i][1] + inp_f[i - 1][1] + inp_f[i - 1][0] + inp_f[i - 1][-1]
-            elif i == len(inp_f) - 1 and k == len(inp_f[i]) - 1:
-                buff += inp_f[i][k - 1] + inp_f[0][k - 1] + inp_f[0][k] + inp_f[0][0] + inp_f[i][0] + inp_f[i - 1][0] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
+                buff += inp_f[0][-1] + inp_f[1][-1] + inp_f[1][0] + inp_f[1][1] + \
+                        inp_f[0][1] + inp_f[-1][1] + inp_f[-1][0] + inp_f[-1][-1]
+            elif i == 0 and k == size[1] - 1:
+                buff += inp_f[0][k - 1] + inp_f[1][k - 1] + inp_f[1][k] + inp_f[1][0] + \
+                        inp_f[0][0] + inp_f[-1][0] + inp_f[-1][k] + inp_f[-1][k - 1]
+            elif i == size[0] - 1 and k == 0:
+                buff += inp_f[i][-1] + inp_f[0][-1] + inp_f[0][0] + inp_f[0][1] + \
+                        inp_f[i][1] + inp_f[i - 1][1] + inp_f[i - 1][0] + inp_f[i - 1][-1]
+            elif i == size[0] - 1 and k == size[1] - 1:
+                buff += inp_f[i][k - 1] + inp_f[0][k - 1] + inp_f[0][k] + inp_f[0][0] + \
+                        inp_f[i][0] + inp_f[i - 1][0] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
             elif i == 0:
-                buff += inp_f[0][k - 1] + inp_f[1][k - 1] + inp_f[1][k] + inp_f[1][k + 1] + inp_f[0][k + 1] + inp_f[-1][k + 1] + inp_f[-1][k] + inp_f[-1][k - 1]
-            elif i == len(inp_f) - 1:
-                buff += inp_f[i][k - 1] + inp_f[0][k - 1] + inp_f[0][k] + inp_f[0][k + 1] + inp_f[i][k + 1] + inp_f[i - 1][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
+                buff += inp_f[0][k - 1] + inp_f[1][k - 1] + inp_f[1][k] + inp_f[1][k + 1] + \
+                        inp_f[0][k + 1] + inp_f[-1][k + 1] + inp_f[-1][k] + inp_f[-1][k - 1]
+            elif i == size[0] - 1:
+                buff += inp_f[i][k - 1] + inp_f[0][k - 1] + inp_f[0][k] + inp_f[0][k + 1] + \
+                        inp_f[i][k + 1] + inp_f[i - 1][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
             elif k == 0:
-                buff += inp_f[i][-1] + inp_f[i + 1][-1] + inp_f[i + 1][0] + inp_f[i + 1][1] + inp_f[i][1] + inp_f[i - 1][1] + inp_f[i - 1][0] + inp_f[i - 1][-1]
-            elif k == len(inp_f[i]) - 1:
-                buff += inp_f[i][k - 1] + inp_f[i + 1][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][0] + inp_f[i][0] + inp_f[i - 1][0] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
+                buff += inp_f[i][-1] + inp_f[i + 1][-1] + inp_f[i + 1][0] + inp_f[i + 1][1] + \
+                        inp_f[i][1] + inp_f[i - 1][1] + inp_f[i - 1][0] + inp_f[i - 1][-1]
+            elif k == size[1] - 1:
+                buff += inp_f[i][k - 1] + inp_f[i + 1][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][0] + \
+                        inp_f[i][0] + inp_f[i - 1][0] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
             else:
-                buff += inp_f[i][k - 1] + inp_f[i + 1][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1] + inp_f[i][k + 1] + inp_f[i - 1][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
+                buff += inp_f[i][k - 1] + inp_f[i + 1][k - 1] + inp_f[i + 1][k] + inp_f[i + 1][k + 1] + \
+                        inp_f[i][k + 1] + inp_f[i - 1][k + 1] + inp_f[i - 1][k] + inp_f[i - 1][k - 1]
             func_2(inp_f, out_f, buff, i, k)
             buff = ''
 
-    for i in out_f:
-        print_str = ''
-        for k in i:
-            print_str += k
-        print(print_str)
+    result_print(out_f)
 
 
 func()
-
 
 # from copy import deepcopy
 #
