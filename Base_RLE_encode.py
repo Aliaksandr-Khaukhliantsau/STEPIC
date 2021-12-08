@@ -34,28 +34,28 @@
 # a
 
 # первый вариант
-# def func():
+# def input_field():
 #     my_str = input()
 #     result = ''
 #     count = 1
-#     for i in range(len(my_str)):
-#         if i < len(my_str) - 1:
-#             if my_str[i + 1] == my_str[i]:
+#     for y in range(len(my_str)):
+#         if y < len(my_str) - 1:
+#             if my_str[y + 1] == my_str[y]:
 #                 count += 1
 #             else:
 #                 if count > 1:
-#                     result += f'{count}{my_str[i]}'
+#                     result += f'{count}{my_str[y]}'
 #                 else:
-#                     result += f'{my_str[i]}'
+#                     result += f'{my_str[y]}'
 #                 count = 1
 #         elif count > 1:
-#             result += f'{count}{my_str[i]}'
+#             result += f'{count}{my_str[y]}'
 #         else:
-#             result += f'{my_str[i]}'
+#             result += f'{my_str[y]}'
 #     return result
 #
 #
-# print(func())
+# print(input_field())
 
 
 # второй вариант

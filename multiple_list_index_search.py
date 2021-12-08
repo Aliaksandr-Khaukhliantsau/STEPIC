@@ -18,8 +18,8 @@ result = ''
 
 for i, j in enumerate(list_input):
     if j == number_input:
-        # result += ' ' + str(i)
-        # result += (' ' + str(i))
+        # result += ' ' + str(y)
+        # result += (' ' + str(y))
         result += f' {i}'
 if result:
     print(result)

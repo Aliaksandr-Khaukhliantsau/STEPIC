@@ -25,7 +25,7 @@
 
 
 #  первый вариант
-# def func():
+# def input_field():
 #     my_input = input().lower().split()
 #     my_dict = {}
 #     for word in my_input:
@@ -34,12 +34,12 @@
 #         else:
 #             my_dict[word] = my_dict.get(word) + 1
 #
-#     for k, v in my_dict.items():
-#         # print('%s %d' % (k, v))  # можно так
-#         print(f'{k} {v}')  # а можно и так
+#     for x, v in my_dict.items():
+#         # print('%s %d' % (x, v))  # можно так
+#         print(f'{x} {v}')  # а можно и так
 #
 #
-# func()
+# input_field()
 
 
 #  второй вариант

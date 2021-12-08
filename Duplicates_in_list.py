@@ -19,23 +19,23 @@
 
 # первый вариант
 
-# def func():
+# def input_field():
 #     my_list = []
 #     result = []
 #     a = int
 #     numb = input().split()
-#     for i in numb:
-#         my_list.append(int(i))
+#     for y in numb:
+#         my_list.append(int(y))
 #     my_list.sort()
-#     for i in my_list:
-#         if i == a:
-#             result.append(str(i))
-#         a = i
+#     for y in my_list:
+#         if y == a:
+#             result.append(str(y))
+#         a = y
 #     result = set(result)
 #     return ' '.join(result)
 #
 #
-# print(func())
+# print(input_field())
 
 
 # второй вариант
@@ -43,19 +43,19 @@
 import collections
 
 
-# def func():
+# def input_field():
 #     result = []
 #     my_collection = collections.Counter()
 #     numb = input().split()
-#     for i in numb:
-#         my_collection[i] += 1
-#     for i, k in my_collection.most_common():
-#         if k > 1:
-#             result.append(i)
+#     for y in numb:
+#         my_collection[y] += 1
+#     for y, x in my_collection.most_common():
+#         if x > 1:
+#             result.append(y)
 #     return ' '.join(result)
 #
 #
-# print(func())
+# print(input_field())
 
 
 # третий вариант

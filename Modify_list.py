@@ -16,13 +16,13 @@
 # первый вариант
 # def modify_list(l):
 #     buf = []
-#     for i in range(len(l)):
-#         if l[i] % 2:
-#             buf.append(l[i])
+#     for y in range(len(l)):
+#         if l[y] % 2:
+#             buf.append(l[y])
 #         else:
-#             l[i] = l[i] // 2
-#     for k in buf:
-#         l.remove(k)
+#             l[y] = l[y] // 2
+#     for x in buf:
+#         l.remove(x)
 #
 #
 # lst = [1, 2, 3, 4, 5, 6]
