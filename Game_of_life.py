@@ -213,7 +213,29 @@ def output_fields(inp_f, out_f, buff, y, x):
 def check_field(size, inp_f, out_f, buff):
     for y in range(size[0]):
         for x in range(size[1]):
-            if y == 0 and x == 0:
+
+            if size[0] == 1 and size[1] == 1:
+                buff += inp_f[0][0] + inp_f[0][0] + inp_f[0][0] + inp_f[0][0] + \
+                        inp_f[0][0] + inp_f[0][0] + inp_f[0][0] + inp_f[0][0]
+            elif size[0] == 1 and size[1] == 2:
+                buff += inp_f[0][x - 1] + inp_f[0][x - 1] + inp_f[0][x] + inp_f[0][x - 1] + \
+                        inp_f[0][x - 1] + inp_f[0][x - 1] + inp_f[0][x] + inp_f[0][x - 1]
+            elif size[0] == 1 and x == size[1] - 1:
+                buff += inp_f[0][x - 1] + inp_f[0][x - 1] + inp_f[0][x] + inp_f[0][0] + \
+                        inp_f[0][0] + inp_f[0][0] + inp_f[0][x] + inp_f[0][x - 1]
+            elif size[0] == 1:
+                buff += inp_f[0][x - 1] + inp_f[0][x - 1] + inp_f[0][x] + inp_f[0][x + 1] + \
+                        inp_f[0][x + 1] + inp_f[0][x + 1] + inp_f[0][x] + inp_f[0][x - 1]
+            elif size[0] == 2 and size[1] == 1:
+                buff += inp_f[y][0] + inp_f[y - 1][0] + inp_f[y - 1][0] + inp_f[y - 1][0] + \
+                        inp_f[y][0] + inp_f[y - 1][0] + inp_f[y - 1][0] + inp_f[y - 1][0]
+            elif y == size[0] - 1 and size[1] == 1:
+                buff += inp_f[y][0] + inp_f[0][0] + inp_f[0][0] + inp_f[0][0] + \
+                        inp_f[y][0] + inp_f[y - 1][0] + inp_f[y - 1][0] + inp_f[y - 1][0]
+            elif size[1] == 1:
+                buff += inp_f[y][0] + inp_f[y + 1][0] + inp_f[y + 1][0] + inp_f[y + 1][0] + \
+                        inp_f[y][0] + inp_f[y - 1][0] + inp_f[y - 1][0] + inp_f[y - 1][0]
+            elif y == 0 and x == 0:
                 buff += inp_f[0][-1] + inp_f[1][-1] + inp_f[1][0] + inp_f[1][1] + \
                         inp_f[0][1] + inp_f[-1][1] + inp_f[-1][0] + inp_f[-1][-1]
             elif y == 0 and x == size[1] - 1:
@@ -248,10 +270,6 @@ def check_field(size, inp_f, out_f, buff):
 
 def input_field():
     size = tuple(int(i) for i in input().split())
-
-    if size[0] < 2 or size[1] < 2:
-        return print(f'размер поля должен быть минимум 3 на 3')
-
     inp_f = []
 
     for i in range(size[0]):
