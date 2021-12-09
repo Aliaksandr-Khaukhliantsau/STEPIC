@@ -28,3 +28,13 @@
 # Sample Output 3:
 #
 # III
+
+def func():
+    dec_str = input().split()
+    dec_int = int(dec_str)
+    dec_list = dec_str.split()
+    rom = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+
+    print(dec_str, dec_list, dec_int)
+
+func()
