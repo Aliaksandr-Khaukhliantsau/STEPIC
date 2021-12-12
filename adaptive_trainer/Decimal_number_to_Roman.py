@@ -30,11 +30,39 @@
 # III
 
 def func():
-    dec_str = input().split()
+    # dec_str = input()
+    dec_str = '1984'
     dec_int = int(dec_str)
-    dec_list = dec_str.split()
-    rom = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    dec_list = []
+    for i in dec_str:
+        dec_list += i
 
-    print(dec_str, dec_list, dec_int)
+    dec_str_2 = ''.join(dec_list)
+
+    res = int(dec_str)
+    res_list = []
+    i = 1
+    for _ in range(len(dec_str)):
+        buff = str(res)
+        res_list.append(int(buff[len(buff) - i:]))
+        res -= int(buff[len(buff) - i:])
+        print(res)
+        i += 1
+
+
+    res_list.reverse()
+
+    rom = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    # rom = {'1': 'I', '5': 'V', '10': 'X', '50': 'L', '100': 'C', '500': 'D', '1000': 'M'}
+
+    print(res_list)
+
+    result = ''
+    for i in res_list:
+        for k, v in rom:
+            if i == v:
+                result += v
+            elif
+
 
 func()
