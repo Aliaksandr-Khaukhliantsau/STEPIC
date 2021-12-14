@@ -21,9 +21,11 @@ def t():
     print('t')
     return True
 
+
 def f():
     print('f')
     return False
+
 
 x = 0
 if f() < t() < f():
@@ -31,3 +33,5 @@ if f() < t() < f():
 
 if f() < t() and t() < f():
     x += 1
+
+print(x)
