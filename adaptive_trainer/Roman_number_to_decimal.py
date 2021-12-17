@@ -32,7 +32,10 @@
 # 3
 
 def func():
-    rom = ','.join(input())
+    rom = 'III'
+    # rom = input()
+    # rom = ','.join(input())
+    # rom = ','.join(input()).split(',')
     rom_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
     dec_rom = {'1': 'I', '2': 'II', '3': 'III', '4': 'IV',
            '5': 'V', '6': 'VI', '7': 'VII', '8': 'VIII', '9': 'IX',
@@ -42,11 +45,47 @@ def func():
            '500': 'D', '600': 'DC', '700': 'DCC', '800': 'DCCC', '900': 'CM',
            '1000': 'M', '2000': 'MM', '3000': 'MMM'}
 
-    rom.reverse()
+
+    # rom = reversed(rom)
+    # rom = reversed(rom)
+    # rom.reverse()
+
+
+    res = []
     for r in rom:
         for k, v in rom_dict.items():
             if k == r:
+                res.append(int(v))
+
+    print(res)
+
+
+    result = 0
+    for i in range(len(res)):
+        if i == 0:
+            if res[i] > res[i + 1]:
+                result += res[i]
+            elif res[i] >= res[i + 1]:
+                result += res[i]
+        elif i < len(res) - 1:
+            if res[i] > res[i - 1]:
+                result += (res[i] - res[i - 1])
+            elif res[i] < res[i + 1]:
+                continue
+            elif res[i] >= res[i + 1]:
+                result += res[i]
+            else:
                 pass
 
+        else:
+            if res[i] > res[i - 1]:
+                result += (res[i] - res[i - 1])
+            elif res[i] <= res[i - 1]:
+                result += res[i]
+
+
+
+
+    print(result)
 
 func()
