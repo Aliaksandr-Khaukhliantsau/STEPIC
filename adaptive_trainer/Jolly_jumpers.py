@@ -34,16 +34,19 @@
 # Jolly
 
 
-
-
-
 def func():
-    # inp = input().split()
-    inp = ['1', '-3', '-4', '-1', '1']
-    my_list = []
+    inp = [int(i) for i in input().split()]
+    diff = []
     for i in range(len(inp) - 1):
-        my_list.append(int(inp[i]) + (int(inp[i + 1]) * -1))
+        diff.append(abs(inp[i] + inp[i + 1] * -1))
 
-    print(my_list)
+    diff.sort()
+
+    for i in range(len(diff) - 1):
+        if diff[i] + 1 != diff[i + 1]:
+            return print('Not jolly')
+
+    print('Jolly')
+
 
 func()
