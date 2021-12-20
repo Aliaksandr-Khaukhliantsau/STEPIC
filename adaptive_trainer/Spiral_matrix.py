@@ -20,8 +20,33 @@
 # 13 12 11 10 9
 
 def func():
-    len_lst = [i for i in range(1, (int(input())) + 1)]
-    print(len_lst)
+    # len_lst = [i for i in range(1, (int(input())) ** 2 + 1)]
+    # print(len_lst)
+
+
+    lst = []
+    inp = int(input())
+
+    # for i in range(inp):
+    #     for q in range(i):
+    #         lst.append([])
+
+    # print(lst)
+
+    _result = [[1, 2, 3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13], [14, 15, 16], [17, 18, 19], [20, 21], [22, 23], [24], [25]]
+
+    p = 0
+
+    while p < inp * 2 - 1:
+        lst.append([])
+        p += 1
+
+    print(lst)
+
+
+        # [] * p + [] * (p - 1) + [] * (p - 1) + [] * (p - 2) + [] * (p - 2) + [] * (p - 3) + [] * (p - 3) + [] * (p - 4) + [] * (p - 4)
+
+
 
 
 func()
