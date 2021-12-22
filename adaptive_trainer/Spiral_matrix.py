@@ -20,33 +20,30 @@
 # 13 12 11 10 9
 
 def func():
-    # len_lst = [i for i in range(1, (int(input())) ** 2 + 1)]
-    # print(len_lst)
+    n = int(input())
+    matrix = []
 
+    for i in range(n):
+        matrix.append([])
+        for k in range(n):
+            matrix[i].append(None)
 
-    lst = []
-    inp = int(input())
+    x, y = 0, 0
+    move_x, move_y = 1, 0  # если 1 то двигаемся вправо или вниз, если -1 то влево или вверх
 
-    # for i in range(inp):
-    #     for q in range(i):
-    #         lst.append([])
+    for i in range(n ** 2):
+        matrix[y][x] = i + 1
+        if move_x:
+            test = x + move_x
+        else:
+            test = y + move_y
+        if test < 0 or test == n or matrix[y + move_y][x + move_x] is not None:  # проверка на выход за пределы матрицы
+            move_x, move_y = -move_y, move_x  # меняем направление движения по матрице
+        x += move_x  # двигаемся по x b y
+        y += move_y
 
-    # print(lst)
-
-    _result = [[1, 2, 3, 4, 5], [6, 7, 8, 9], [10, 11, 12, 13], [14, 15, 16], [17, 18, 19], [20, 21], [22, 23], [24], [25]]
-
-    p = 0
-
-    while p < inp * 2 - 1:
-        lst.append([])
-        p += 1
-
-    print(lst)
-
-
-        # [] * p + [] * (p - 1) + [] * (p - 1) + [] * (p - 2) + [] * (p - 2) + [] * (p - 3) + [] * (p - 3) + [] * (p - 4) + [] * (p - 4)
-
-
+    for y in range(n):
+        print(*matrix[y])
 
 
 func()
