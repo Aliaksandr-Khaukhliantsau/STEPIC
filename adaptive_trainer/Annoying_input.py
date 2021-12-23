@@ -24,37 +24,31 @@
 # Код решения не должен содержать вызова функции get_int. Гарантируется, что в какой-то момент пользователем будет
 # введено целое число.
 
-
-
-
+# способ 1
 # def get_int(start_message, error_message, end_message):
-#     x = input(f'{start_message}\n')
-#     try:
-#         if int(x) % 2 or int(x) == 0:
+#     print(start_message)
+#     while True:
+#         try:
+#             x = int(input())
+#             print(end_message)
+#             return x
+#         except:
 #             print(error_message)
-#             get_int('Input int number:', 'Wrong value. Input int number:', 'Thank you.')
-#         print(end_message)
-#         return int(x)
-#     except:
-#         print(error_message)
-#         get_int('Input int number:', 'Wrong value. Input int number:', 'Thank you.')
 #
 #
 # x = get_int('Input int number:', 'Wrong value. Input int number:', 'Thank you.')
+# print(x)
 
-
-
+# способ 2
 def get_int(start_message, error_message, end_message):
-    while True:
-        print(start_message)
-        x = input()
-        try:
-            if not int(x) % 2 and int(x) != 0:
-                print(end_message)
-                return int(x)
-        except:
-
-
+    print(start_message)
+    try:
+        x = int(input())
+        print(end_message)
+        return x
+    except:
+        return get_int(error_message, error_message, end_message)
 
 
 x = get_int('Input int number:', 'Wrong value. Input int number:', 'Thank you.')
+print(x)
