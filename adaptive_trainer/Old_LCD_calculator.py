@@ -29,23 +29,7 @@
 # | --        --   --        --   --        --   -- |
 # x-------------------------------------------------x
 
-# my_input = input()
-my_input = '02'
-
-# a = [
-#  [' -- ', '    ', ' -- ', '--',       ' --',   '-- ',  '--',  ' --',   '--'],
-#  ['|  |', '   |', '   |',    ,| |  | |    |       | |  | |  |],
-#  ['|  |', '   |', '   |',    | |  | |    |       | |  | |  |],
-#  ['    ', '    ', ' -- ',   --   --   --   --        --   -- ],
-#  ['|  |', '   |', '|   ',    |    |    | |  |    | |  |    |],
-#  ['|  |', '   |', '|   ', '','     |    |    | |  |    | |  |    |],
-#  [' -- ',         ' -- ','  --        --   --        --   -- ]
-#
-
-
-
-
-
+my_input = input()
 
 num_dict = {
     '0': [' -- ',
@@ -110,7 +94,7 @@ num_dict = {
           '    ',
           '   |',
           '   |',
-          ' -- '],
+          '    '],
 
     '8': [' -- ',
           '|  |',
@@ -129,18 +113,12 @@ num_dict = {
           ' -- ']
 }
 
-print('x' + '----' * len(my_input) + 'x')
+print('x' + '----' * len(my_input) + '-' * (len(my_input) - 1) + 'x')
 
-for smbl in my_input:
-    for st in num_dict.get(smbl):
-        print(st)
+for i in range(7):
+    buff = ''
+    for smbl in my_input:
+        buff += num_dict.get(smbl)[i] + ' '
+    print('|' + buff[0:-1] + '|')
 
-
-
-# print(*num_dict.get(smbl))
-
-
-# for i, k in num_dict.items():
-#     print('|' + k + '|')
-
-print('x' + '----' * len(my_input) + 'x')
+print('x' + '----' * len(my_input) + '-' * (len(my_input) - 1) + 'x')
