@@ -57,3 +57,4 @@ def func(n):
 
 
 func(int(input()))
+
