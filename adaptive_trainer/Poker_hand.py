@@ -68,7 +68,13 @@ def func():
     # my_cards = ['10C', 'JC', 'QD', 'KH', 'AS']
     # my_cards = ['10C', '10H', '10D', 'KC', '2C']
     # my_cards = ['10C', '10H', 'QC', 'QD', 'AC']
-    my_cards = ['10C', '10H', 'QH', 'KD', 'AS']
+    # my_cards = ['10C', '10H', 'QH', 'KD', 'AS']
+    # my_cards = ['10C', '9H', 'QH', '2D', 'AS']
+
+
+    my_cards = ['5S', '3H', '6C', '7C', '4S']
+
+
 
     order_value_tuple = ('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A')
     order_value_str = (''.join(order_value_tuple))
@@ -90,23 +96,24 @@ def func():
     my_cards_value_set = set(my_cards_value_list)
     my_cards_suit_set = set(my_cards_suit_list)
 
+    for i in range(len(my_cards_value_list)):
+        if my_cards_value_list[i].isdigit():
+            my_cards_value_list[i] = int(my_cards_value_list[i])
+        elif my_cards_value_list[i] == 'J':
+            my_cards_value_list[i] = 11
+        elif my_cards_value_list[i] == 'Q':
+            my_cards_value_list[i] = 12
+        elif my_cards_value_list[i] == 'K':
+            my_cards_value_list[i] = 13
+        elif my_cards_value_list[i] == 'A':
+            my_cards_value_list[i] = 14
+
+    my_cards_value_list.sort()
+
+
 
     print(f'{my_cards_dict}\n{my_cards_value_list}\n{my_cards_suit_list}\n{my_cards_value_set}\n{my_cards_suit_set}')
 
-
-    # if len(my_cards_suit_set) == 1:
-    #     if my_cards_value_list == ['10', 'J', 'Q', 'K', 'A']:
-    #         print('Royal Flush')
-    #     elif set(my_cards_value_list).issubset(order_value_tuple) and :
-    #         print('Straight Flush')
-    #     elif len(my_cards_value_set) == 5:
-    #         print('Flush')
-    #
-    # else:
-    #     if set(my_cards_value_list).issubset(order_value_tuple):
-    #         print('Straight')
-    #
-    # if
 
     m_k_v_c = collections.Counter(my_cards_value_list)
     m_k_s_c = collections.Counter(my_cards_suit_list)
@@ -114,7 +121,7 @@ def func():
 
     print(m_k_v_c)
     print(m_k_s_c)
-
+    #
     print(m_k_v_c.values())
     print(m_k_s_c.values())
 
@@ -133,19 +140,15 @@ def func():
             print('Four of a Kind')
         elif set(m_k_v_c.values()) == {3, 2}:
             print('Full House')
-        elif set(m_k_v_c.values()) == {3, 1, 1}:
+        elif set(m_k_v_c.values()) == {3, 1}:
             print('Three of a Kind')
-        elif set(m_k_v_c.values()) == {2, 2, 1}:
+        elif list(m_k_v_c.values()).count(2) == 2:
             print('Two Pairs')
-        elif set(m_k_v_c.values()) == {2, 1, 1, 1}:
+        elif list(m_k_v_c.values()).count(1) == 3:
             print('Pair')
         else:
             print('High Card')
 
-
-        # for v in m_k_v_c.values():
-        #     if v == 4:
-        #         print('Four of a Kind')
 
 
 func()
